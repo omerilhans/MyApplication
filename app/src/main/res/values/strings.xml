@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">My Application</string>
+
+    <string name="msg_data_could_not_retrieved">Data could not be retrieved. Please try again later!</string>
+</resources>

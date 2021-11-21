@@ -1,0 +1,47 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext.kotlinVersion = '1.5.0'
+    ext.hiltVersion ='2.37'
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:4.2.2"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$hiltVersion"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+// Define versions in a single place
+ext {
+    // Sdk and tools
+    // Support library and architecture components support minSdk 21 and above.
+    minSdkVersion = 21
+    targetSdkVersion = 31
+    compileSdkVersion = 31
+    buildToolsVersion = "30.0.2"
+
+    appcompatVersion='1.4.0'
+    materialVersion= '1.5.0-beta01'
+    swipeRefreshLayout='1.1.0'
+    activityKtxVersion= '1.4.0'
+    annotationVersion ='1.1.0'
+    hiltViewmodels = '1.0.0-alpha03'
+    livedataKtx='2.4.0'
+    swipeRefreshLayout='1.1.0'
+}

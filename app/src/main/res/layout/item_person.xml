@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="person"
+            type="com.omerilhanli.myapplication.data.datasource.Person" />
+    </data>
+
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_small"
+        android:layout_marginVertical="@dimen/margin_tiny"
+        android:background="@color/clr_background"
+        android:padding="@dimen/padding_medium"
+        android:text="@{person.fullName + ` (` + person.id + `)`}"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/text_size_xlarge"
+        tools:text="Elif Ata" />
+</layout>

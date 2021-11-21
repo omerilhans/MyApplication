@@ -1,0 +1,84 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+    id 'kotlin-platform-android'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.omerilhanli.myapplication"
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        dataBinding true
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+        }
+
+        release {
+            debuggable false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "default"
+
+    productFlavors {
+        dev {
+            dimension = 'default'
+            applicationIdSuffix = ".dev"
+        }
+        prod {
+            dimension = 'default'
+        }
+    }
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+
+    // Android Support
+    implementation "androidx.appcompat:appcompat:$appcompatVersion"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swipeRefreshLayout"
+    implementation "androidx.activity:activity-ktx:$activityKtxVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$livedataKtx"
+    implementation "androidx.annotation:annotation:$annotationVersion"
+
+    // Google Material
+    implementation "com.google.android.material:material:$materialVersion"
+
+    // Hilt
+    implementation "com.google.dagger:hilt-android:$hiltVersion"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltViewmodels"
+    kapt "com.google.dagger:hilt-compiler:$hiltVersion"
+    androidTestImplementation "com.google.dagger:hilt-android-testing:$hiltVersion"
+    kaptAndroidTest "com.google.dagger:hilt-android-compiler:$hiltVersion"
+}

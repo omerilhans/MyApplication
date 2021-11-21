@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.omerilhanli.myapplication.ui.main.MainViewModel" />
+    </data>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        app:isRefreshing="@{vm.loading}"
+        tools:context=".ui.main.MainActivity">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="@{!vm.isDataCouldNotRetrieved}"
+                app:invoke="@{()-> vm.getPeople()}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:context=".ui.main.MainActivity" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="@dimen/padding_large"
+                android:text="@string/msg_data_could_not_retrieved"
+                android:textSize="@dimen/text_size_large"
+                android:visibility="@{vm.isDataCouldNotRetrieved}" />
+        </FrameLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</layout>
