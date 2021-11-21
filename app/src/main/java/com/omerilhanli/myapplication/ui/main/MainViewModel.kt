@@ -36,12 +36,14 @@ constructor(
                         }
 
                         peopleResponse.postValue(Resource.success(it))
+                        isDataCouldNotRetrieved.postValue(it.people.isEmpty())
                     }
 
                     fetchError?.let {
                         if (it.errorDescription.isNotEmpty()) {
                             peopleResponse.postValue(Resource.error(it))
                         }
+                        isDataCouldNotRetrieved.postValue(true)
                     }
                 }
         }

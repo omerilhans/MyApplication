@@ -47,7 +47,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main),
                                     adapter.update(people, swipedForRefresh)
                                     swipedForRefresh = false
                                 }
-                                isDataCouldNotRetrieved.postValue(people.isEmpty())
                             }
                     }
             }
@@ -56,7 +55,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main),
                 (resource.data as FetchError)
                     .apply {
                         showToastUI(errorDescription)
-                        mainViewModel.isDataCouldNotRetrieved.postValue(true)
                     }
             }
         }

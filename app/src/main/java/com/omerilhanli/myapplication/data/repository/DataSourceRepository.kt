@@ -9,7 +9,7 @@ class DataSourceRepository @Inject
 constructor(private val dataSource: DataSource) {
 
     fun fetchPeople(nextPage: String?, fetchCompletionHandler: FetchCompletionHandler) {
-        dataSource.fetch(next = nextPage, fetchCompletionHandler)
+        dataSource.fetch(next = nextPage, completionHandler = fetchCompletionHandler)
     }
 }
 
